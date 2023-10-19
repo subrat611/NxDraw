@@ -1,0 +1,1 @@
+// remove this file when templates have more than one file/folder
