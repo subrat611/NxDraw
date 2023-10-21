@@ -1,3 +1,7 @@
 .boardMenuContainer {
   transform: translateX(-50%);
 }
+
+.boardMenuToolBoxContainer {
+  transform: translateY(-20%);
+}
