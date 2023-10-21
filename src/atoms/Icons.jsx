@@ -1,5 +1,5 @@
 export const PenIcon = (props) => {
-  const { w = 21, h = 21 } = props;
+  const { w = 18, h = 18 } = props;
   return (
     <svg
       width={w}
@@ -20,7 +20,7 @@ export const PenIcon = (props) => {
 };
 
 export const EraserIcon = (props) => {
-  const { w = 21, h = 21 } = props;
+  const { w = 18, h = 18 } = props;
   return (
     <svg
       width={w}
@@ -36,6 +36,30 @@ export const EraserIcon = (props) => {
         strokeWidth="2"
         d="m7 21l-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21m9 0H7M5 11l9 9"
       />
+    </svg>
+  );
+};
+
+export const UploadImageIcon = (props) => {
+  const { w = 18, h = 18 } = props;
+  return (
+    <svg
+      width={w}
+      height={h}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      >
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7m4 2h6m-3-3v6" />
+        <circle cx="9" cy="9" r="2" />
+        <path d="m21 15l-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+      </g>
     </svg>
   );
 };
