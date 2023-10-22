@@ -1,8 +1,20 @@
+// lib
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+
+// components
 import { EraserIcon, PenIcon, UploadImageIcon } from "@/atoms/Icons";
-import { useState } from "react";
+
+// redux
+import { setSelectedMenuTool } from "@/redux/slices/menuSlice";
 
 const BoardMenu = () => {
   const [selectedTool, setSelectedTool] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setSelectedMenuTool({ data: selectedTool }));
+  }, [dispatch, selectedTool]);
 
   return (
     <div className="drop-shadow-md bg-zinc-900 border border-gray-600 rounded-md flex py-2 w-[90vw] max-w-[300px] justify-around items-center">

@@ -2,10 +2,11 @@ import BoardMenu from "@/organisms/BoardMenu/BoardMenu";
 import BoardMenuToolBox from "@/organisms/BoardMenuToolBox/BoardMenuToolBox";
 
 import styles from "./HomeTemplate.module.css";
+import CanvasBoard from "@/organisms/CanvasBoard/CanvasBoard";
 
 const HomeTemplate = () => {
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen w-screen">
       <div className={`absolute top-3 left-[50%] ${styles.boardMenuContainer}`}>
         <BoardMenu />
       </div>
@@ -14,6 +15,7 @@ const HomeTemplate = () => {
       >
         <BoardMenuToolBox />
       </div>
+      <CanvasBoard />
     </div>
   );
 };

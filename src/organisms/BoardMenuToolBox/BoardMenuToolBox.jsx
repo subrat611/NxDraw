@@ -1,30 +1,38 @@
+// lib
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+// components
 import { PlusIcon } from "@/atoms/Icons";
 
-import { StrokeColors } from "@/utils";
+// redux & actions
+import {
+  setActiveStrokeColor,
+  setEraserSize,
+} from "@/redux/slices/menuToolboxSlice";
 
 const BoardMenuToolBox = () => {
-  const [eraserSize, setEraserSize] = useState(10);
-  const [strokeColors, setStrokeColors] = useState(StrokeColors);
-  const [selectedColor, setSelectedColor] = useState(`${strokeColors[0]}-${0}`);
+  const { strokeColors, activeStrokeColor, eraserSize } = useSelector(
+    (state) => state.menuToolbox
+  );
+  const dispatch = useDispatch();
 
   const handleEraserSize = (e) => {
-    setEraserSize(e.target.value);
+    dispatch(setEraserSize({ data: e.target.value }));
   };
 
   const handleSelectedColor = (color, pos) => {
-    setSelectedColor(`${color}-${pos}`);
+    dispatch(setActiveStrokeColor({ data: `${color}-${pos}` }));
   };
 
   return (
-    <div className="drop-shadow-md bg-zinc-900 rounded-md py-2 px-3 w-[90vw] max-w-fit">
+    <div className="drop-shadow-md bg-zinc-900 rounded-md py-2 px-3 max-w-fit">
       <p className="text-slate-300 text-sm">Stroke</p>
       <div className="my-3 flex items-center">
         {strokeColors.map((color, i) => (
           <div
             className={`${
-              selectedColor === `${color}-${i}`
+              activeStrokeColor === `${color}-${i}`
                 ? "border-2 border-sky-400"
                 : "border-2 border-transparent"
             } rounded-full p-px mr-1`}
