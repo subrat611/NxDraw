@@ -1,10 +1,15 @@
 // lib
 import { useEffect, useLayoutEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+// slices
+import { setIsDownload } from "@/redux/slices/menuSlice";
 
 const CanvasBoard = () => {
   const canvasRef = useRef(null);
   const isDraw = useRef(false);
+  const dispatch = useDispatch();
+
   const menuState = useSelector((state) => state.menu);
   const { activeStrokeColor, eraserSize } = useSelector(
     (state) => state.menuToolbox
@@ -95,6 +100,22 @@ const CanvasBoard = () => {
       canvasCtx.lineWidth = Number(eraserSize);
     }
   }, [activeStrokeColor, eraserSize, menuState]);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+
+    if (menuState.isDownload) {
+      const URL = canvas.toDataURL();
+      const anchor = document.createElement("a");
+      anchor.href = URL;
+      anchor.download = "canvas.jpg";
+      anchor.click();
+
+      dispatch(setIsDownload({ data: false }));
+    }
+  }, [dispatch, menuState.isDownload]);
 
   return <canvas ref={canvasRef}></canvas>;
 };

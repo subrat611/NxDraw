@@ -2,6 +2,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   selectedMenuTool: null,
+  isDownload: false,
 };
 
 const menuSlice = createSlice({
@@ -11,8 +12,11 @@ const menuSlice = createSlice({
     setSelectedMenuTool: (state, { payload }) => {
       state.selectedMenuTool = payload.data;
     },
+    setIsDownload: (state, { payload }) => {
+      state.isDownload = payload.data;
+    },
   },
 });
 
-export const { setSelectedMenuTool } = menuSlice.actions;
+export const { setSelectedMenuTool, setIsDownload } = menuSlice.actions;
 export default menuSlice.reducer;
