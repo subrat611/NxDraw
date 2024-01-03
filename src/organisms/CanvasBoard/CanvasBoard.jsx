@@ -10,7 +10,8 @@ const CanvasBoard = () => {
     (state) => state.menuToolbox
   );
 
-  // before browser paint
+  // Before browser paint the screen
+  // So that canvas does not lose it's properties(size, color etc.)
   useLayoutEffect(() => {
     if (!canvasRef.current) return;
 
@@ -23,6 +24,8 @@ const CanvasBoard = () => {
 
     const handleMouseDown = (e) => {
       isDraw.current = true;
+
+      // path
       canvasCtx.beginPath();
       canvasCtx.moveTo(e.clientX, e.clientY);
     };
@@ -30,6 +33,7 @@ const CanvasBoard = () => {
     const handleMouseMove = (e) => {
       if (!isDraw.current) return;
 
+      // draw line
       canvasCtx.lineTo(e.clientX, e.clientY);
       canvasCtx.stroke();
     };
@@ -55,7 +59,8 @@ const CanvasBoard = () => {
     const canvasCtx = canvas.getContext("2d");
 
     if (selectedMenuTool === "pen") {
-      canvas.style.cursor = "url('pen.svg'), auto";
+      // canvas.style.cursor = "url('pen.svg'), auto";
+      canvas.style.cursor = "auto";
       return;
     }
 

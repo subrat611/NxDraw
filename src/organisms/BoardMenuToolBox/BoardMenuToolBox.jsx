@@ -61,7 +61,7 @@ const BoardMenuToolBox = () => {
             value={eraserSize}
             onChange={handleEraserSize}
           />
-          <span className="ml-2">{eraserSize}px</span>
+          <span className="ml-2">{eraserSize}</span>
         </div>
       </div>
     </div>
